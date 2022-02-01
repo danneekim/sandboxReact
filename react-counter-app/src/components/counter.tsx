@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-
-export default class Counters extends Component <any, any> {
-  
+export default class Counter extends Component<any, any> {
   render() {
     return (
       <div>
-        <h4>Counter #{this.props.counter.id}</h4>
+        {/* <h4>Counter #{this.props.counter.id}</h4> */}
         {/* {this.props.children}  */}
         {/* passing children - ie dialog boxes/modals */}
-
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={() => this.props.onIncrement(this.props.counter.id)}
@@ -17,7 +14,12 @@ export default class Counters extends Component <any, any> {
         >
           Increment
         </button>
-        <button onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-sm btn-danger m-2">Delete</button>
+        <button
+          onClick={() => this.props.onDelete(this.props.counter.id)}
+          className="btn btn-sm btn-danger m-2"
+        >
+          Delete
+        </button>
       </div>
     );
   }
