@@ -1,7 +1,7 @@
 import React from "react";
 
 const Navbar = (props: any) => {
-  console.log("Navbar - Rendered");
+  // console.log("Navbar - Rendered");
 
   const { totalCounters } = props;
   return (
