@@ -13,7 +13,7 @@ export default class Counters extends Component<any, any> {
             key={counter.id}
             counter={counter}
             onIncrement={this.props.onIncrement}
-            onDelete={this.props.onIncrement}
+            onDelete={this.props.onDelete}
           >
             <h4>Counter #{counter.id}</h4>
           </Counter>

@@ -18,6 +18,7 @@ export default class App extends Component {
   // never update state directly
   handleIncrement = (counterId: number) => {
     const counters = [...this.state.counters];
+
     counters.map((c) => {
       if (c.id === counterId) c.value++;
     });
@@ -40,7 +41,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <NavBar></NavBar>
+        <NavBar totalCounters={this.state.counters.length}></NavBar>
         <main className="container">
           <Counters
             onIncrement={this.handleIncrement}
