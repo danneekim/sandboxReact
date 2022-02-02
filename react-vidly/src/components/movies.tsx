@@ -1,6 +1,7 @@
 import { AnyCnameRecord } from "dns";
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
+import Like from "./common/like";
 
 export default class Movies extends Component {
   state = {
@@ -35,6 +36,9 @@ export default class Movies extends Component {
                 <td>{movie.genre.name}</td>
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
+                <td>
+                  <Like></Like>
+                </td>
                 <td>
                   <button
                     onClick={() => this.handleDelete(movie)}
