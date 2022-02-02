@@ -17,29 +17,40 @@ export default class Counter extends Component<any, any> {
 
   render() {
     return (
-      <div>
+      <div className="row">
         {/* <h4>Counter #{this.props.counter.id}</h4> */}
         {/* {this.props.children}  */}
         {/* passing children - ie dialog boxes/modals */}
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button
-          onClick={() => this.props.onIncrement(this.props.counter.id)}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-        <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
-          className="btn btn-sm btn-danger m-2"
-        >
-          Delete
-        </button>
+        <div className="col-1 d-flex align-items-center">
+          <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        </div>
+        <div className="col">
+          <button
+            onClick={() => this.props.onIncrement(this.props.counter.id)}
+            className="btn btn-secondary btn-sm "
+          >
+            Increment
+          </button>
+          <button
+            onClick={() => this.props.onDecrement(this.props.counter.id)}
+            className="btn btn-secondary btn-sm m-2"
+            disabled={this.props.counter.value === 0 ? true : false}
+          >
+            Decrement
+          </button>
+          <button
+            onClick={() => this.props.onDelete(this.props.counter.id)}
+            className="btn btn-sm btn-danger "
+          >
+            Delete
+          </button>
+        </div>
       </div>
     );
   }
 
   getBadgeClasses() {
-    let classes = "badge m-2 ";
+    let classes = "badge ";
     classes += this.props.counter.value === 0 ? "bg-warning" : "bg-primary";
     return classes;
   }

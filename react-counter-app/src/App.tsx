@@ -26,9 +26,16 @@ export default class App extends Component {
   // never update state directly
   handleIncrement = (counterId: number) => {
     const counters = [...this.state.counters];
-
     counters.map((c) => {
       if (c.id === counterId) c.value++;
+    });
+    this.setState({ counters: counters });
+  };
+
+  handleDecrement = (counterId: number) => {
+    const counters = [...this.state.counters];
+    counters.map((c) => {
+      if (c.id === counterId) c.value--;
     });
     this.setState({ counters: counters });
   };
@@ -54,6 +61,7 @@ export default class App extends Component {
         <main className="container">
           <Counters
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
             onDelete={this.handleDelete}
             onReset={this.handleReset}
             counters={this.state.counters}

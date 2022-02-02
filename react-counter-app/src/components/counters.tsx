@@ -6,11 +6,12 @@ export default class Counters extends Component<any, any> {
     // console.log("Counters - Rendered");
 
     //obj destructuring
-    const { onReset, onIncrement, onDelete, counters } = this.props;
+    const { onReset, onIncrement, onDecrement, onDelete, counters } =
+      this.props;
 
     return (
       <div>
-        <button onClick={onReset} className="btn btn-primary m-2">
+        <button onClick={onReset} className="btn btn-primary ">
           Reset
         </button>
         {counters.map((counter: any) => (
@@ -18,6 +19,7 @@ export default class Counters extends Component<any, any> {
             key={counter.id}
             counter={counter}
             onIncrement={onIncrement}
+            onDecrement={onDecrement}
             onDelete={onDelete}
           >
             <h4>Counter #{counter.id}</h4>
