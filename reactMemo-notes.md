@@ -1,5 +1,5 @@
 
-# React.memo + useMemo notes
+# React.memo + useMemo
 
 How re-rendering works with Context in React and using `REACT.memo()` and the `useMemo` Hook to improve app performance.
 
