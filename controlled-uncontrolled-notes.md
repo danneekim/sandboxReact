@@ -1,7 +1,15 @@
-
 # Controlled components vs. Uncontrolled components
 
 Advantages of controlled vs uncontrolled inputs via state design.
+| Feature  | Uncontrolled | Controlled  |
+| ------------- | ------------- | ------------- |
+| One time value retrieval  | **Yes**  | **Yes**  |
+| Validating on submit  | **Yes**   | **Yes**  |
+| Instant Field validation  | No  | **Yes**  |
+| Conditional disable submit | No  | **Yes**  |
+| Enforce specific input | No  | **Yes**  |
+| Several inputs for one piece of data  | No  | **Yes**  |
+| Dynamic Inputs  | No  | **Yes** |
 
 ### Uncontrolled Inputs
 Uncontrolled inputs are like standard HTML form inputs:
@@ -16,6 +24,7 @@ const Form = () => {
 ```
 - They remember exactly what is typed, being the DOM itself that maintains that internal state.
 - In order to access their values, you use React ref.
+
 ```js
 const Form = () => { 
  const inputRef = useRef(null); 
@@ -41,8 +50,9 @@ Controlled inputs accept their current value as a prop and a callback to change 
 const Form = () => { 
  const [value, setValue] = useState(""); 
 
- const handleChange = (e) => { 
-   setValue(e.target.value) 
+ const handleChange = (e) => {
+   // Do something with the value 
+   setValue(e.target.value)
  } 
 
  return ( 
@@ -192,3 +202,6 @@ function App() {
 }
 ```
 </details>
+
+
+
