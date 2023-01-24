@@ -11,7 +11,7 @@ Advantages of controlled vs uncontrolled inputs via state design.
 | Several inputs for one piece of data  | No  | **Yes**  |
 | Dynamic Inputs  | No  | **Yes** |
 
-### Uncontrolled Inputs
+## Uncontrolled Inputs
 Uncontrolled inputs are like standard HTML form inputs:
 ```js
 const Form = () => { 
@@ -40,7 +40,35 @@ const Form = () => {
  ); 
 }; 
 ```
-### Controlled Inputs
+
+<details>
+ <summary><h3>The file input is a specific form input that is always uncontrolled.</h3></summary>
+
+ In React, an `<input type="file" />` is always an uncontrolled component because its value is read-only and can't be set programmatically. 
+
+```js
+const Form = () => { 
+ const fileInput = useRef(null); 
+
+ const handleSubmit = (e) => { 
+   e.preventDefault(); 
+   const files = fileInput.current.files; 
+   // Do something with the files here 
+ } 
+
+ return ( 
+   <form onSubmit={handleSubmit}> 
+     <input 
+       ref={fileInput} 
+       type="file" 
+     /> 
+   </form> 
+ ); 
+}; 
+```
+</details>
+
+## Controlled Inputs
 
 Controlled inputs accept their current value as a prop and a callback to change the value. 
 - Implying the input value(s) exists somewhere in the React state somewhere.
