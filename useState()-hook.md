@@ -1,4 +1,4 @@
-# Updating useState in React
+# useState() Hook
 
 ### Updating the state object in React based on user-generated events.
 
