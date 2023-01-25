@@ -1,4 +1,4 @@
-# Updating state in React
+# Updating useState in React
 
 ### Updating the state object in React based on user-generated events.
 
