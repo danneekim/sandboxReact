@@ -1,5 +1,4 @@
-// Fetch random user details from API
-// Displays first name and photo
+// Fetch random user details from API, displays name/photo w. useEffect()
 import React from "react";
 
 function App() {
