@@ -20,13 +20,11 @@ const ComponentB = () => <ComponentC />;
 const ComponentC = () => null;
 ```
 
-If outermost App component re-renders for whatever reason, 
-	`ComponentA`, `ComponentB` and `ComponentC` will re-render as well.
-
-Following this order:  
+If outermost App component re-renders for whatever reason:
+- `ComponentA`, `ComponentB` and `ComponentC` will re-render as well.
 - `App (ContextProvider) -> A -> B -> C`
 
-If some of your top level components are complex in nature, this could result in some performance hit. To mitigate this issue, you can use `React.memo()`.
+If some of top level components are complex, this could result in a performance hit. To mitigate this issue, you can use `React.memo()`.
 
 ### If component renders the same result given the same props, wrapping it in a call to React.memo would boost performance by memoizing the result.
 
