@@ -6,7 +6,7 @@ How re-rendering works with Context in React and using `REACT.memo()` and the `u
 Imagine the following component structure, where the top level component injects a Context provider at the top: 
 
 - `App (ContextProvider) > A > B > C`
-```
+```js
 const App = () => {
 return (
    <AppContext.Provider>
@@ -32,7 +32,7 @@ If some of your top level components are complex in nature, this could result in
 
  - `Memoization` - a programming technique that accelerates performance by caching the return values of expensive function calls.
 
-```
+```js
 const App = () => {
   const value = {a: 'hello', b: 'bye'};
   return (
@@ -64,7 +64,7 @@ const ComponentC = () => {
 - `{a: ‘hi’, b: ‘bye’} !== {a: ‘hi’, b: ‘bye’}`
 
 #### In order to resolve this issue - we can use the `useMemo` hook as follows:
-```
+```js
 const App = () => {
   const a = 'hi';
   const b = 'bye';
