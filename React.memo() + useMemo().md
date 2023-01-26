@@ -1,7 +1,7 @@
 
 # React.memo + useMemo
 
-How re-rendering works with Context in React and using `REACT.memo()` and the `useMemo` Hook to improve app performance.
+How re-rendering works with Context in React and using `REACT.memo()` and the `useMemo` hook to improve app performance.
 
 Imagine the following component structure, where the top level component injects a Context provider at the top: 
 
