@@ -124,5 +124,51 @@ function MyComponent() {
 - The return function within the useEffect is called when the component unmounts, it set isMounted to false which means that setData and setError will not be called anymore.
 </details>
 
+<details>
+<summary>Async/Await Example </summary>
+<br>
+Here is an example of the useEffect hook to using `async/await` to render a simple dropdown of users.
+
+```js
+import { useState, useEffect } from 'react';
+import { fetchBio } from './api.js';
+
+export default function Page() {
+  const [person, setPerson] = useState('Alice');
+  const [bio, setBio] = useState(null);
+  useEffect(() => {
+    async function startFetching() {
+      setBio(null);
+      const result = await fetchBio(person);
+      if (!ignore) {
+        setBio(result);
+      }
+    }
+
+    let ignore = false;
+    startFetching();
+    return () => {
+      ignore = true;
+    }
+  }, [person]);
+
+  return (
+    <>
+      <select value={person} onChange={e => {
+        setPerson(e.target.value);
+      }}>
+        <option value="Alice">Alice</option>
+        <option value="Bob">Bob</option>
+        <option value="Taylor">Taylor</option>
+      </select>
+      <hr />
+      <p><i>{bio ?? 'Loading...'}</i></p>
+    </>
+  );
+}
+```
+- https://codesandbox.io/s/m0odyk?file=/App.js&utm_medium=sandpack
+</details>
+
 
 
