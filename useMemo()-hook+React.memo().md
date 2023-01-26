@@ -26,7 +26,7 @@ If outermost App component re-renders for whatever reason:
 
 If some of top level components are complex, this could result in a performance hit. To mitigate this issue, you can use `React.memo()`.
 
-### If component renders the same result given the same props, wrapping it in a call to React.memo would boost performance by memoizing the result.
+### If component renders the same result given same props, wrapping it in a call to React.memo() would boost performance by memoization.
 
  - `Memoization` - a programming technique that accelerates performance by caching the return values of expensive function calls.
 
@@ -83,5 +83,5 @@ const ComponentC = () => {
 };
 ```
 
-#### With the above implementation, if App re-renders but values of `a` or `b` remain the same.
+#### With the above implementation, if the App re-renders but values of `a` or `b` remain the same.
    - Only the `App (ContextProvider)` would re-render.
