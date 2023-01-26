@@ -12,7 +12,7 @@ useEffect(() => {
  }); 
 ```
 
-An array `[]` as a second parameter can be passed to avoid applying an effect to run after each render.
+#### An array `[]` as a second parameter can be passed to avoid applying an effect to run after each render.
 
 ```js
 useEffect(() => { 
@@ -170,5 +170,43 @@ export default function Page() {
 - https://codesandbox.io/s/m0odyk?file=/App.js&utm_medium=sandpack
 </details>
 
+<hr>
 
+# Custom Hooks
 
+You can create custom hooks using `useEffect()` to reliably streamline a reusable a piece of functionality in your React apps.
+
+```js
+function useConsoleLog(varName) {
+  useEffect(() => {
+    console.log(varName);
+  }, [varName]);
+}
+
+export default useConsoleLog;
+```
+A custom hook can be created by creating a seperate file at the root of the `src` folder (ie `useConsoleLog.js`),
+- Which can be imported and used to `console.log(variables)` through the application.
+
+```js
+import { useState } from "react";
+import useConsoleLog from "./useConsoleLog";
+
+function App() {
+  const [count, setCount] = useState(0);
+  useConsoleLog(count);                // logs count to console
+
+  function increment() {
+    setCount(prevCount => prevCount + 1);
+  }
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={increment}>Plus 1</button>
+    </div>
+  );
+}
+
+export default App;
+```
