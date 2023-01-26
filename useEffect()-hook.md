@@ -1,9 +1,53 @@
 # useEffect() Hook
 
 ### The **useEffect()** hook is a built-in React hook best suited to perform *side effects* in React components.
+```js
+import { useState, useEffect, useRef } from "react";
 
-- The `useEffect()` hook always runs after the component mounts
-  - *AKA after React has updates the DOM*
+export default function App() {
+  const [day, setDay] = useState("Monday");
+  const prevDay = usePrevious(day);
+  const getNextDay = () => {
+    if (day === "Monday") {
+      setDay("Tuesday")
+    } else if (day === "Tuesday") {
+      setDay("Wednesday")
+    } else if (day === "Wednesday") {
+      setDay("Thursday")
+    } else if (day === "Thursday") {
+      setDay("Friday")
+    } else if (day === "Friday") {
+      setDay("Monday")
+    }
+  }
+  return (
+    <div style={{padding: "40px"}}>
+      <h1>
+        Today is: {day}<br />
+        {
+          prevDay && (
+            <span>Previous work day was: {prevDay}</span>
+          )
+        }
+      </h1>
+      <button onClick={getNextDay}>
+        Get next day
+      </button>
+    </div>
+  );
+}
+
+function usePrevious(val) { // returns previous work day
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = val;
+  }, [val])
+  return ref.current;
+}
+```
+
+- The `useEffect()` hook always runs after the component mounts (ie - after React updates the DOM)
+
 
 #### By default, if no second argument is provided to the useEffect function, the effect will run after every render.
 ```js
@@ -26,6 +70,7 @@ useEffect(() => {
   - React compares [2] from the previous render and [2] from the next render.<br>
   - Since all items inside the array are the same, React would skip running the effect.
   </details>
+
 
 #### Using multiple Effects to Separate Concerns
 ```js
