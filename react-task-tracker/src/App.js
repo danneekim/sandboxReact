@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Tasks } from "./components/Tasks";
-import AddTask from "./components/AddTask";
+import AddTaskForm from "./components/AddTaskForm";
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false);
@@ -42,7 +42,6 @@ function App() {
     });
 
     const data = await res.json();
-    console.log(data);
     return data;
   };
 
@@ -58,6 +57,7 @@ function App() {
 
     const data = await res.json();
     setTasks([...tasks, data]);
+    setShowAddTask(!showAddTask);
 
     // const id = tasks.slice(-1)[0].id + 1;
     // const newTask = { id, ...task };
@@ -90,7 +90,7 @@ function App() {
         onAdd={() => setShowAddTask(!showAddTask)}
         showAdd={showAddTask}
       />
-      {showAddTask && <AddTask onAdd={addTask} />}
+      {showAddTask && <AddTaskForm onAdd={addTask} />}
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (

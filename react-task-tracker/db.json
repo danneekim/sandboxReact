@@ -15,7 +15,7 @@
     {
       "text": "Practice coding in React",
       "day": "Monday",
-      "reminder": true,
+      "reminder": false,
       "id": 3
     }
   ]
